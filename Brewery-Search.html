@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery Search</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #68916a;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Brewery Search</h1>
+        <form id="search-form">
+            <input type="text" placeholder="City" name="city" required>
+            <input type="text" placeholder="Name" name="name">
+            <select name="type">
+                <option value="">Select Type</option>
+                <option value="micro">micro</option>
+                <option value="nano">nano</option>
+            </select><br>
+            <button type="button" onclick="searchBreweries()">Search</button>
+        </form>
+    </div>
+
+    <script>
+        function searchBreweries() {
+            var city = document.getElementsByName("city")[0].value;
+            var name = document.getElementsByName("name")[0].value;
+            var type = document.getElementsByName("type")[0].value;
+
+            
+            var breweryData = [
+            {
+                name: "Brewery 1",
+                address: "Jayanagar",
+                phone: "555-1234",
+                website: "https://www.openbrewerydb.org/documentation",
+                rating: 4.5,
+                state: "Karnataka",
+                city: "Bangalore",
+                type: "micro"
+            },
+            {
+                name: "Brewery 2",
+                address: "Marathalli",
+                phone: "555-5678",
+                website: "https://www.openbrewerydb.org/documentation",
+                rating: 3.8,
+                state: "Maharastra",
+                city: "Mumbai",
+                type: "nano"
+            },
+        ];
+
+            var resultsJSON = JSON.stringify(breweryData);
+
+            var redirectURL = "resultspage.html?results=" + encodeURIComponent(resultsJSON);
+
+            window.location.href ="resultspage.html";
+        }
+    </script>
+</body>
+</html>

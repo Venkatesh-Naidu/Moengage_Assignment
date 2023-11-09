@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewery Search Results</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .brewery-info {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        
+        }
+
+        .brewery-info h2 {
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .brewery-info p {
+            margin: 5px 0;
+        }
+
+        h2 {
+            color: #afa04c;
+            margin-top: 20px;
+        }
+
+        #review-form {
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        #review-form input, #review-form textarea, #review-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #877070;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        #review-form button {
+            background-color: #afaa4c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #review-form button:hover {
+            background-color: #456ca0;
+        }
+
+        footer {
+            text-align: center;
+            justify-items: center;
+            justify-content: center;
+            width: 500px;
+            padding: 20px;
+            padding-left: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Brewery Search Results</h1>
+
+        <script>
+           
+            var selectedCity ="Bangalore"; 
+            var selectedName = "Brewery 1"; 
+            var selectedType = "micro"; 
+            var breweryData = [
+                {
+                    name: "Brewery 1",
+                    address: "Jayanagar",
+                    phone: "555-1234",
+                    website: "https://www.openbrewerydb.org/documentation",
+                    rating: 4.5,
+                    state: "Karnataka",
+                    city: "Bangalore",
+                    type: "micro"
+                },
+                {
+                    name: "Brewery 2",
+                    address: "Andheri",
+                    phone: "555-5678",
+                    website: "https://www.openbrewerydb.org/documentation",
+                    rating: 3.8,
+                    state: "Maharastra",
+                    city: "Mumbai",
+                    type: "nano"
+                },
+                
+            ];
+
+            
+            breweryData.forEach(function (brewery) {
+                if (
+                    brewery.city === selectedCity &&
+                    brewery.name === selectedName &&
+                    brewery.type === selectedType
+                ) {
+                    var breweryInfo = document.createElement("div");
+                    breweryInfo.classList.add("brewery-info");
+                    breweryInfo.innerHTML = `
+                        <h2>${brewery.name}</h2>
+                        <p><strong>Address:</strong> ${brewery.address}</p>
+                        <p><strong>Phone:</strong> ${brewery.phone}</p>
+                        <p><strong>Website:</strong> <a href="${brewery.website}" target="_blank">${brewery.website}</a></p>
+                        <p><strong>Rating:</strong> ${brewery.rating}</p>
+                        <p><strong>State, City:</strong> ${brewery.state}, ${brewery.city}</p>
+                        <p><strong>Type:</strong> ${brewery.type}</p>
+                    `;
+                    document.body.appendChild(breweryInfo);
+                }
+            });
+        </script>
+    </div>
+
+    <footer>
+        <h2>Add a Review</h2>
+        <form id="review-form">
+            <input type="number" placeholder="Rating (1-5)" name="rating" min="1" max="5" required>
+            <textarea placeholder="Description" name="description" required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </footer>
+</body>
+</html>

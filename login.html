@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login / Signup</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script>
+        function checkLogin() {
+            var username = document.forms["login-form"]["username"].value;
+            var password = document.forms["login-form"]["password"].value;
+
+            if (username === "user" && password === "pass") {
+                window.location.href = "Brewery-Search.html"; 
+            } else {
+                window.location.href = "Brewery-Search.html"; 
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login or Signup</h1>
+        <form id="login-form" onsubmit="event.preventDefault(); checkLogin();">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+</body>
+</html>
